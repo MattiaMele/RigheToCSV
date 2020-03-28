@@ -46,24 +46,32 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock
+            <!--<TextBlock
                 Grid.Row="0" Grid.Column="0"
                 HorizontalAlignment="Right"
-                Text="Percorso file da convertore (Input) :"/>
+                Text="Percorso file da convertore (Input) :"/>-->
             <TextBox
                 Grid.Row="0" Grid.Column="1"
-                Text="{Binding FilePathInput, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBlock
+                materialDesign:HintAssist.Hint="Percorso file da convertire (Input) :"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                Text="{Binding FilePathInput, UpdateSourceTrigger=PropertyChanged}"
+                HorizontalAlignment="Center"
+                />
+            
+            <!--<TextBlock
                 Grid.Row="1" Grid.Column="0"
                 HorizontalAlignment="Right"
-                Text="Percorso nuovo file (Output) :"/>
+                Text="Percorso nuovo file (Output) :"/>-->
             <TextBox
                 Grid.Row="1" Grid.Column="1"
-                Text="{Binding FilePathOutput , UpdateSourceTrigger=PropertyChanged}"/>
+                materialDesign:HintAssist.Hint="Percorso nuovo file (Output) :"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                Text="{Binding FilePathOutput , UpdateSourceTrigger=PropertyChanged}"
+                HorizontalAlignment="Center"/>
 
         </Grid>
         
@@ -90,30 +98,34 @@
                 <TextBlock
                     Grid.Row="0" Grid.Column="0" 
                     HorizontalAlignment="Right"
-                    Text="Numero colonne desiderato:"
+                    Text="Numero colonne desiderato:   "
                     ToolTip="Il numero di colonne del CSV"/>
                 <TextBox
                     Grid.Row="0" Grid.Column="2"
                     MinWidth="40"
-                    Text="{Binding NumeroColonne, UpdateSourceTrigger=PropertyChanged}"/>
+                    Text="{Binding NumeroColonne, UpdateSourceTrigger=PropertyChanged}"
+                    />
                 <TextBlock
                     Grid.Row="1" Grid.Column="0" 
                     HorizontalAlignment="Right"
-                    Text="Numero di righe iniziali da saltare: "/>
+                    Text="Numero di righe iniziali da saltare:   "/>
                 <TextBox
                     Grid.Row="1" Grid.Column="2"
                     MinWidth="40"
-                    Text="{Binding RigheInizialiDaSaltare, UpdateSourceTrigger=PropertyChanged}"/>
+                    
+                    Text="{Binding RigheInizialiDaSaltare, UpdateSourceTrigger=PropertyChanged}"
+                    />
                 <TextBlock
                     Grid.Row="2" Grid.Column="0" 
                     HorizontalAlignment="Right"
-                    Text="stringa sostitutiva per eventuali punti e virgola."
+                    Text="stringa sostitutiva per eventuali punti e virgola:   "
                     ToolTip="Essendo il file un CSV, non possono essere presenti punti e virgola (;) nei valori, tutti i punti e virgola verranno sostituiti con la stringa inserita"/>
                 
                 <TextBox
                     Grid.Row="2" Grid.Column="2"
                     MinWidth="40"
-                    Text="{Binding NuovoPuntoEVirgola, UpdateSourceTrigger=PropertyChanged}"/>
+                    Text="{Binding NuovoPuntoEVirgola, UpdateSourceTrigger=PropertyChanged}"
+                    />
                 <TextBlock
                     Grid.Row="3" Grid.Column="0" 
                     HorizontalAlignment="Right"
