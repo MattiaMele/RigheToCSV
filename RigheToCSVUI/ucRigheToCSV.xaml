@@ -7,6 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Background="{DynamicResource MaterialDesignPaper}"
+             AllowDrop="True"
+             Drop="_DropHappened"
              >
     <UserControl.Resources>
         <!--<Style 
@@ -23,7 +26,8 @@
         </Style>-->    
     </UserControl.Resources>
     <Grid
-        Margin="5">
+        Margin="5"
+        >
         
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -55,6 +59,7 @@
                 HorizontalAlignment="Right"
                 Text="Percorso file da convertore (Input) :"/>-->
             <TextBox
+                
                 Grid.Row="0" Grid.Column="1"
                 materialDesign:HintAssist.Hint="Percorso file da convertire (Input) :"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"

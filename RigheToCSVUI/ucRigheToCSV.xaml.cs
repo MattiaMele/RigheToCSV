@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RigheToCSVPresenter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,15 @@ namespace RigheToCSVUI
     /// </summary>
     public partial class ucRigheToCSV : UserControl
     {
+
+        public RigheToCSV Presenter
+        {
+            get
+            {
+                return DataContext as RigheToCSV;
+            }
+            
+        }
         public ucRigheToCSV()
         {
             InitializeComponent();
@@ -29,7 +39,23 @@ namespace RigheToCSVUI
         {
             try
             {
-                (DataContext as dynamic).AvviaConversione();
+                Presenter.AvviaConversione();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERRORE");
+            }
+            
+        }
+
+        private void _DropHappened(object sender, DragEventArgs e)
+        {
+            try
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                Presenter.ImpostaFilePath(files);
+
+
             }
             catch (Exception ex)
             {

@@ -109,7 +109,32 @@ namespace RigheToCSVPresenter
         }
 
         
+        public void ImpostaFilePath(string[] files)
+        {
+            try
+            {
+                if (files.Length > 0)
+                {
+                    string fileDroppato = files[0];
+                    FilePathInput = fileDroppato;
+                    string extension = fileDroppato.Substring(fileDroppato.Length - 4, 4);
+                    if (extension[0] == '.')
+                    {
+                        FilePathOutput = fileDroppato.Substring(0, fileDroppato.Length - 4) + ".csv";
+                    }
+                    else
+                    {
+                        FilePathOutput = null;
+                    }
+                }
+                
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+        }
 
         public void AvviaConversione()
         {
@@ -146,7 +171,7 @@ namespace RigheToCSVPresenter
 
                 }
 
-                MessageBox.Show($"Operazione completata, nuovo file creato in {FilePathOutput}");
+                MessageBox.Show($"Operazione completata, nuovo file creato: {File.Open(FilePathOutput,FileMode.Open).Name}");
             }
             catch (Exception ex)
             {
