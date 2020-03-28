@@ -64,7 +64,7 @@ namespace RigheToCSVPresenter
             }
         }
 
-        int _numeroColonne;
+        int _numeroColonne = 1;
         public int NumeroColonne
         {
             get

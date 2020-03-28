@@ -6,20 +6,21 @@
              xmlns:local="clr-namespace:RigheToCSVUI"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              >
     <UserControl.Resources>
-        <Style 
-            TargetType="TextBlock"
+        <!--<Style 
+            TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}"
             x:Key="{x:Type TextBlock}">
             <Setter Property="FontFamily" Value="Verdana"/>
             <Setter Property="Margin" Value="5"/>
         </Style>
         <Style 
-            TargetType="TextBox"
+            TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}"
             x:Key="{x:Type TextBox}">
             <Setter Property="FontFamily" Value="Verdana"/>
             <Setter Property="Margin" Value="5"/>
-        </Style>    
+        </Style>-->    
     </UserControl.Resources>
     <Grid
         Margin="5">
@@ -79,15 +80,15 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBlock
-                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                    Grid.Row="0" Grid.Column="0" 
                     HorizontalAlignment="Right"
                     Text="Numero colonne desiderato:"
                     ToolTip="Il numero di colonne del CSV"/>
@@ -96,7 +97,7 @@
                     MinWidth="40"
                     Text="{Binding NumeroColonne, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock
-                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                    Grid.Row="1" Grid.Column="0" 
                     HorizontalAlignment="Right"
                     Text="Numero di righe iniziali da saltare: "/>
                 <TextBox
@@ -106,17 +107,21 @@
                 <TextBlock
                     Grid.Row="2" Grid.Column="0" 
                     HorizontalAlignment="Right"
-                    Text="stringa sostitutiva per eventuali punti e virgola. Numero caratteri ineriti:"
+                    Text="stringa sostitutiva per eventuali punti e virgola."
                     ToolTip="Essendo il file un CSV, non possono essere presenti punti e virgola (;) nei valori, tutti i punti e virgola verranno sostituiti con la stringa inserita"/>
-                <TextBlock
-                    Grid.Row="2" Grid.Column="1" 
-                    Margin="0"
-                    HorizontalAlignment="Right"
-                    Text="{Binding NumeroCaratteriSostitutivi}"/>
+                
                 <TextBox
-                    Grid.Row="3" Grid.Column="2"
+                    Grid.Row="2" Grid.Column="2"
                     MinWidth="40"
                     Text="{Binding NuovoPuntoEVirgola, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock
+                    Grid.Row="3" Grid.Column="0" 
+                    HorizontalAlignment="Right"
+                    Text="Numero caratteri sostitutivi inseriti: "/>
+                <TextBlock
+                    Grid.Row="3" Grid.Column="1" 
+                    Margin="0"
+                    Text="{Binding NumeroCaratteriSostitutivi}"/>
                 
                 
 
