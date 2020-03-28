@@ -1,0 +1,137 @@
+﻿<UserControl x:Class="RigheToCSVUI.ucRigheToCSV"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RigheToCSVUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             >
+    <UserControl.Resources>
+        <Style 
+            TargetType="TextBlock"
+            x:Key="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style 
+            TargetType="TextBox"
+            x:Key="{x:Type TextBox}">
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>    
+    </UserControl.Resources>
+    <Grid
+        Margin="5">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            FontSize="30"
+            Text="Covertitore File in CSV"
+            Margin="5,35,5,35"/>
+        
+        <Grid
+            Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Grid.Row="0" Grid.Column="0"
+                HorizontalAlignment="Right"
+                Text="Percorso file da convertore (Input) :"/>
+            <TextBox
+                Grid.Row="0" Grid.Column="1"
+                Text="{Binding FilePathInput, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock
+                Grid.Row="1" Grid.Column="0"
+                HorizontalAlignment="Right"
+                Text="Percorso nuovo file (Output) :"/>
+            <TextBox
+                Grid.Row="1" Grid.Column="1"
+                Text="{Binding FilePathOutput , UpdateSourceTrigger=PropertyChanged}"/>
+
+        </Grid>
+        
+        
+        <Expander
+            Grid.Row="2"
+            Header="OPZIONI"
+            HorizontalAlignment="Center"
+            Margin="5,15,5,5"
+            IsExpanded="True">
+            <Grid
+            >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                    HorizontalAlignment="Right"
+                    Text="Numero colonne desiderato:"
+                    ToolTip="Il numero di colonne del CSV"/>
+                <TextBox
+                    Grid.Row="0" Grid.Column="2"
+                    MinWidth="40"
+                    Text="{Binding NumeroColonne, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock
+                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                    HorizontalAlignment="Right"
+                    Text="Numero di righe iniziali da saltare: "/>
+                <TextBox
+                    Grid.Row="1" Grid.Column="2"
+                    MinWidth="40"
+                    Text="{Binding RigheInizialiDaSaltare, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock
+                    Grid.Row="2" Grid.Column="0" 
+                    HorizontalAlignment="Right"
+                    Text="stringa sostitutiva per eventuali punti e virgola. Numero caratteri ineriti:"
+                    ToolTip="Essendo il file un CSV, non possono essere presenti punti e virgola (;) nei valori, tutti i punti e virgola verranno sostituiti con la stringa inserita"/>
+                <TextBlock
+                    Grid.Row="2" Grid.Column="1" 
+                    Margin="0"
+                    HorizontalAlignment="Right"
+                    Text="{Binding NumeroCaratteriSostitutivi}"/>
+                <TextBox
+                    Grid.Row="3" Grid.Column="2"
+                    MinWidth="40"
+                    Text="{Binding NuovoPuntoEVirgola, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                
+
+            </Grid>
+        </Expander>
+
+        <Button
+            Grid.Row="3"
+            Margin="20"
+            Content="ESEGUI"
+            Width="100"
+            Height="30"
+            Click="_EseguiOperazione"/>
+
+
+
+    </Grid>
+</UserControl>
