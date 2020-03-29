@@ -12,29 +12,33 @@
              Drop="_DropHappened"
              >
     <UserControl.Resources>
-        <!--<Style 
+        <Style 
             TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}"
             x:Key="{x:Type TextBlock}">
-            <Setter Property="FontFamily" Value="Verdana"/>
+            <!--<Setter Property="FontFamily" Value="Verdana"/>-->
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
             <Setter Property="Margin" Value="5"/>
         </Style>
         <Style 
             TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}"
             x:Key="{x:Type TextBox}">
-            <Setter Property="FontFamily" Value="Verdana"/>
+            <!--<Setter Property="FontFamily" Value="Verdana"/>-->
             <Setter Property="Margin" Value="5"/>
-        </Style>-->    
+            
+        </Style>    
     </UserControl.Resources>
-    <Grid
+    <WrapPanel
         Margin="5"
+        HorizontalAlignment="Center"
+        Orientation="Vertical"
         >
         
-        <Grid.RowDefinitions>
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+        </Grid.RowDefinitions>-->
 
         <TextBlock
             Grid.Row="0"
@@ -65,6 +69,7 @@
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 Text="{Binding FilePathInput, UpdateSourceTrigger=PropertyChanged}"
                 HorizontalAlignment="Center"
+                PreviewDragOver="TextBox_PreviewDragOver"
                 />
             
             <!--<TextBlock
@@ -76,17 +81,23 @@
                 materialDesign:HintAssist.Hint="Percorso nuovo file (Output) :"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 Text="{Binding FilePathOutput , UpdateSourceTrigger=PropertyChanged}"
-                HorizontalAlignment="Center"/>
+                HorizontalAlignment="Center"
+                PreviewDragOver="TextBox_PreviewDragOver"/>
 
         </Grid>
         
         
         <Expander
             Grid.Row="2"
-            Header="OPZIONI"
-            HorizontalAlignment="Center"
+            
+            HorizontalAlignment="Stretch"
             Margin="5,15,5,5"
             IsExpanded="True">
+            <Expander.Header>
+                <TextBlock Text="OPZIONI"
+                           FontSize="16"
+                           HorizontalAlignment="Center"/>
+            </Expander.Header>
             <Grid
             >
                 <Grid.RowDefinitions>
@@ -98,6 +109,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBlock
@@ -106,7 +118,7 @@
                     Text="Numero colonne desiderato:   "
                     ToolTip="Il numero di colonne del CSV"/>
                 <TextBox
-                    Grid.Row="0" Grid.Column="2"
+                    Grid.Row="0" Grid.Column="1"
                     MinWidth="40"
                     Text="{Binding NumeroColonne, UpdateSourceTrigger=PropertyChanged}"
                     />
@@ -115,7 +127,7 @@
                     HorizontalAlignment="Right"
                     Text="Numero di righe iniziali da saltare:   "/>
                 <TextBox
-                    Grid.Row="1" Grid.Column="2"
+                    Grid.Row="1" Grid.Column="1"
                     MinWidth="40"
                     
                     Text="{Binding RigheInizialiDaSaltare, UpdateSourceTrigger=PropertyChanged}"
@@ -127,17 +139,14 @@
                     ToolTip="Essendo il file un CSV, non possono essere presenti punti e virgola (;) nei valori, tutti i punti e virgola verranno sostituiti con la stringa inserita"/>
                 
                 <TextBox
-                    Grid.Row="2" Grid.Column="2"
+                    Grid.Row="2" Grid.Column="1"
                     MinWidth="40"
                     Text="{Binding NuovoPuntoEVirgola, UpdateSourceTrigger=PropertyChanged}"
                     />
+                
                 <TextBlock
-                    Grid.Row="3" Grid.Column="0" 
-                    HorizontalAlignment="Right"
-                    Text="Numero caratteri sostitutivi inseriti: "/>
-                <TextBlock
-                    Grid.Row="3" Grid.Column="1" 
-                    Margin="0"
+                    Grid.Row="2" Grid.Column="2" 
+                    Margin="5"
                     Text="{Binding NumeroCaratteriSostitutivi}"/>
                 
                 
@@ -155,5 +164,5 @@
 
 
 
-    </Grid>
+    </WrapPanel>
 </UserControl>

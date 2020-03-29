@@ -99,11 +99,11 @@ namespace RigheToCSVPresenter
             }
         }
 
-        public int NumeroCaratteriSostitutivi
+        public string NumeroCaratteriSostitutivi
         {
             get
             {
-                return NuovoPuntoEVirgola.Length;
+                return $"({NuovoPuntoEVirgola.Length})";
             }
             
         }
@@ -143,9 +143,9 @@ namespace RigheToCSVPresenter
                 _ControlliLogici();
 
                 _righeFile = File.ReadAllLines(FilePathInput);
-
                 using (StreamWriter newfile = new StreamWriter(FilePathOutput))
                 {
+                    
                     int j = 0;
                     StringBuilder rigaOutput = new StringBuilder();
 
@@ -168,10 +168,14 @@ namespace RigheToCSVPresenter
 
                     }
 
-
                 }
-
-                MessageBox.Show($"Operazione completata, nuovo file creato: {File.Open(FilePathOutput,FileMode.Open).Name}");
+                string nomeFileSalvato;
+                using (FileStream check = File.Open(FilePathOutput, FileMode.Open))
+                {
+                    nomeFileSalvato = check.Name;
+                    
+                }
+                MessageBox.Show($"Operazione completata, nuovo file creato: {nomeFileSalvato}");
             }
             catch (Exception ex)
             {
