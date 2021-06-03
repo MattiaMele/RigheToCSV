@@ -1,5 +1,7 @@
 # RigheToCSV
-Convertitore di file generico dove ogni riga e' un campo in CSV
+Convertitore di file generico dove ogni riga e' un campo in CSV.
+
+Programma banale, usato per risolvere una situazione specifica, ma magari puo' servire anche a qualcun'altro
 
 Un semplice programma per creare csv a partire da file di testo formattati in modo che una riga corrisponde ad un campo.
 
